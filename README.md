@@ -3,7 +3,7 @@
 Game in Galcon style written on JavaScript with [http://snapsvg.io/](Snap.svg)
 
 ##How to write AI
-* Create file <ai_name>.js in /js/ai/ folder.
+* Create ai_name.js in /js/ai/ folder.
 * Write AI:
 ```javascript
 (function () {
