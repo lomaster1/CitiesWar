@@ -11,7 +11,7 @@ var Utils = {
     return Utils.getRandom(10000000, 99999999);
   },
 
-  getRandomColor: function(initColor) {
+  getRandomColor: function (initColor) {
     return initColor.replace(/RR/g, Utils.getRandom(0, 255)).replace(/GG/g, Utils.getRandom(0, 255)).replace(/BB/g, Utils.getRandom(0, 255));
   },
 
@@ -21,6 +21,9 @@ var Utils = {
     },
     isCirclesIntersect: function (x, y, r, x2, y2, r2) {
       return (Math.pow(x2 - x, 2) + Math.pow(y2 - y, 2) <= Math.pow(r2 + r, 2));
+    },
+    distance: function (x1, y1, x2, y2) {
+      return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
     }
   }
 

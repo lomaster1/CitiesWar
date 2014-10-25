@@ -20,7 +20,7 @@ Soldiers.prototype.goTo = function (x, y) {
   var goResult;
 
   var dist = Math.sqrt(Math.pow(me.x - x, 2) + Math.pow(me.y - y, 2));
-  var goTime = 1500 + dist * (1 / me.speed);
+  var goTime = (1500 + dist * (1 / me.speed)) * (1 / me.city.world.globalSpeed);
 
   if (me.view) {
     goResult = me.view.goTo(x, y, goTime);

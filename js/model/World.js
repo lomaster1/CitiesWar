@@ -2,6 +2,8 @@
 var World = function (width, height) {
   var me = this;
 
+  me.globalSpeed = 1;
+
   me.view = null;
 
   me.width = width;
@@ -16,16 +18,18 @@ var World = function (width, height) {
 World.prototype.addUsers = function (users) {
   var me = this;
 
+  var halfWidth = me.width * 0.5;
+  var halfHeight = me.height * 0.5;
+
   var userCityR = 120;
-  //FIXME: убрать  деления, вынести  (me.width / 2) из под цикла
-  var a = me.width / 2 - userCityR; //120 - величина города пользователя.
-  var b = me.height / 2 - userCityR; //120 - величина города пользователя.
+  var a = halfWidth - userCityR;
+  var b = halfHeight - userCityR;
 
   var angle = 360 / users.length;
 
   for (var i = 0 ; i < users.length; i++) {
-    var x1 = a * Math.cos(Snap.rad(angle * i)) + (me.width / 2);
-    var y1 = b * Math.sin(Snap.rad(angle * i)) + (me.height / 2);
+    var x1 = a * Math.cos(Snap.rad(angle * i)) + halfWidth;
+    var y1 = b * Math.sin(Snap.rad(angle * i)) + halfHeight;
     me._createCity(x1, y1, userCityR, users[i]);
   }
 

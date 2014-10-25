@@ -13,6 +13,8 @@
   <script src="js/view/snap.svg.js"></script>
 </head>
 <body class="noselection">
+  <button id="gameStart" style="position: absolute; top: 0; left: 0;">Старт</button>
+  <button id="gameStop" style="position: absolute; top: 0; right: 0;">Стоп</button>
   <script src="js/model/Utils.js"></script>
   <script src="js/view/SVGLib.js"></script>
   <script src="js/view/SVGLibFiles.js"></script>
@@ -22,21 +24,27 @@
   <script src="js/view/WorldView.js"></script>
   <script src="js/view/CityView.js"></script>
   <script src="js/view/SoldiersView.js"></script>
+  <script src="js/model/Game.js"></script>
   <script>
     var width = Math.max(document.documentElement.clientWidth, window.innerWidth || 0) - 2;
     var height = Math.max(document.documentElement.clientHeight, window.innerHeight || 0) - 7;
 
     svgLib.load(window.SVGLibFiles).done(function (buildings, airplanes) {
-      var world = window.world = new World(width, height);
-      world.addUsers([{
-        name: 'User1',
-        color: 'rgb(0,0,BB)'
+      var game = new Game(width, height, [{
+        name: 'bot1',
+        color: 'rgb(0,GG,0)'
       }, {
         name: 'User2',
-        color: 'rgb(0,GG,0)'
-      }]);
-      var worldView = new WorldView(world);
-      worldView.render();
+        color: 'rgb(0,0,BB)'
+      }], 10); //10 - это скорость игры.
+
+      $('#gameStart').click(function () {
+        game.start();
+      });
+      $('#gameStop').click(function () {
+        game.stop();
+      });
+      
       /**/
     });
   </script>

@@ -32,7 +32,7 @@ City.prototype.growPopulation = function () {
 
   setTimeout(function () {
     me.growPopulation();
-  }, (1500 - me.r * 10));
+  }, (1500 - me.r * 10) / me.world.globalSpeed);
 };
 
 // Изменяет население города на count человек.
@@ -71,9 +71,12 @@ City.prototype.formSoldiersAndGoTo = function (x, y) {
   for (var i = 0; i < me.world.cities.length; i++) {
     var otherCity = me.world.cities[i];
     if (otherCity.isInCity(x, y)) {
-      //FIXME: var s = me.formSoldiers(Math.round(me.population * 0.5));
-      var s = me.formSoldiers(Math.round(me.population / 2));
-      s.goTo(otherCity.x, otherCity.y);
+      var s = me.formSoldiers(Math.round(me.population * 0.5));
+      if (s) {
+        s.goTo(otherCity.x, otherCity.y);
+        return true;
+      }
     }
   }
+  return false;
 };
