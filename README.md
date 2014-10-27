@@ -9,6 +9,20 @@ Game in Galcon style written on JavaScript with [http://snapsvg.io/](Snap.svg)
 (function () {
   var dist = Utils.geometry.distance;
   
+  /**
+   * Main AI function
+   * @param {Array of CityModel} myCities
+   * @param {Array of CityModel} otherCities
+   * CityModel = {
+   * userName: 'string - Owner username (empty if city is neutral)',
+   *  x: 'int - x-coordinate',
+   *  y: 'int - y-coordinate',
+   *  r: 'int - city radius',
+   *  population: 'int - city population'
+   * }
+   * Only myCities has goTo method which send half of city population to another city.
+   * @example https://github.com/lomaster1/CitiesWar/blob/master/js/ai/bot1.js
+   */
   function myBot(myCities, otherCities) {
     // Your AI here.
   }
